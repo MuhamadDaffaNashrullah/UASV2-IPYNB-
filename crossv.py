@@ -12,12 +12,12 @@ print(df.columns)
 print(df.head())
 
 # Pra-pemrosesan teks (optional)
-df['cleaned'] = df['cleaned'].astype(str).str.lower()
+df['cleaned_ulasan'] = df['cleaned_ulasan'].astype(str).str.lower()
 
 # TF-IDF vectorization
 tfidf = TfidfVectorizer(max_features=5000)
-X = tfidf.fit_transform(df['cleaned'])
-y = df['predicted_sentiment']
+X = tfidf.fit_transform(df['cleaned_ulasan'])
+y = df['label']
 
 # Stratified K-Fold Cross-Validation
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
